@@ -136,8 +136,7 @@ int main()
         perror("Failed to open serial port");
         return 1;
     }
-
-    // Pass address directly (NO struct)
+    
     if (pthread_create(&tid, NULL, ntrip_dev, &serial_fd) != 0) {
         perror("Error creating NTRIP thread");
         close(serial_fd);
