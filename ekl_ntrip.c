@@ -96,7 +96,7 @@ void *serial_reader_thread(void *arg)
             if (line[0] != '$' || !verifyChecksum(line))
                 continue;
 
-            // GGA sentence
+            // GGA
             else if (strstr(line, "GGA"))
             {
                 gga_nmeaparser(line, &tim, &lat, &ltdir, &lng, &lngdir,
@@ -104,8 +104,17 @@ void *serial_reader_thread(void *arg)
 
                 printf("GGA: %d %f %c %f %c %d %d %d %f %f\n",
                        tim, lat, ltdir, lng, lngdir,
-                       qua,diff_age, nsati, hdop, alti);
+                       qua,diff_age, nsati, hdop, diff_sat);
             }
+                
+            //RMC
+             else if (strstr(line, "GGA"))
+            {
+                rmc_nmeaparser(line, &tim, &valid, &lat, &ltdir,
+                                           &lng, &lngdir, &spd, &hd, &dat, &fixt);
+            }
+
+
         }
         else if (c != '\r' && idx < sizeof(line) - 1)
         {
