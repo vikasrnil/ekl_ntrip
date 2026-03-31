@@ -102,7 +102,7 @@ void *serial_reader_thread(void *arg)
                 gga_nmeaparser(line, &tim, &lat, &ltdir, &lng, &lngdir,
                                &qua, &nsati, &hdop, &alti, &diff_age, &diff_sat);
 
-                printf("GGA: %d %f %c %f %c %d %d %d %f %f\n",
+                printf("GGA: %d %f %c %f %c %d %d %d %f %d\n",
                        tim, lat, ltdir, lng, lngdir,
                        qua,diff_age, nsati, hdop, diff_sat);
             }
