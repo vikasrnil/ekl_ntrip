@@ -108,7 +108,7 @@ void *serial_reader_thread(void *arg)
             }
                 
             //RMC
-             else if (strstr(line, "GGA"))
+             else if (strstr(line, "RMC"))
             {
                 rmc_nmeaparser(line, &tim, &valid, &lat, &ltdir,
                                            &lng, &lngdir, &spd, &hd, &dat, &fixt);
